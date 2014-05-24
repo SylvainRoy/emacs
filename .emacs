@@ -25,13 +25,16 @@
 (setq inhibit-startup-message t)
 (setq initial-scratch-message "")
 
+;; Remove useless whitespace before saving
+(add-hook 'before-save-hook 'whitespace-cleanup)
+
 
 ;; == Package sources ==
 
 ;; Adding more sources of packages
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+			 ("marmalade" . "http://marmalade-repo.org/packages/")
+			 ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 
 ;; == Multiple Cursors ==
@@ -88,8 +91,8 @@ your recently and most frequently used commands.")
 ;; Key-binding to join lines
 (global-set-key (kbd "M-j")
 		(lambda ()
-                  (interactive)
-                  (join-line -1)))
+		  (interactive)
+		  (join-line -1)))
 
 
 ;; == Evaluate elisp in place
@@ -100,9 +103,9 @@ your recently and most frequently used commands.")
   (backward-kill-sexp)
   (condition-case nil
       (prin1 (eval (read (current-kill 0)))
-             (current-buffer))
+	     (current-buffer))
     (error (message "Invalid expression")
-           (insert (current-kill 0)))))
+	   (insert (current-kill 0)))))
 
 (global-set-key (kbd "C-S-j")
 		'eval-and-replace)
