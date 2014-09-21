@@ -100,7 +100,7 @@ your recently and most frequently used commands.")
 		  (join-line -1)))
 
 
-;; == Evaluate elisp in place
+;; == Evaluate elisp in place ==
 
 (defun eval-and-replace ()
   "Replace the preceding sexp with its value."
@@ -114,6 +114,16 @@ your recently and most frequently used commands.")
 
 (global-set-key (kbd "C-S-j")
 		'eval-and-replace)
+
+
+;; == Better key bindings to change window ==
+
+(defun frame-bck()
+  (interactive)
+  (other-window -1))
+
+(define-key (current-global-map) (kbd "M-n") 'other-window)
+(define-key (current-global-map) (kbd "M-p") 'frame-bck)
 
 
 ;; == Sticky mode ==
@@ -158,7 +168,7 @@ your recently and most frequently used commands.")
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
- '(custom-enabled-themes (quote (wombat)))
+ '(custom-enabled-themes (quote (misterioso)))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 (custom-set-faces
