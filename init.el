@@ -9,6 +9,9 @@
 ;;  - smex
 ;;  - pcre2el
 
+;; Memo:
+;;  - C-x z: repeat previous command
+;;  - C-q C-j: insert new line in mini buffer
 
 ;; == Misc customizations ==
 
@@ -62,7 +65,9 @@
 
 
 ;; == Perl like reg exp ==
+;; Reminder: C-q C-j to insert new line in mini buffer
 (global-set-key [(meta %)] 'pcre-query-replace-regexp)
+
 
 
 ;; == Better completion with Ido ==
@@ -122,8 +127,8 @@ your recently and most frequently used commands.")
   (interactive)
   (other-window -1))
 
-(define-key (current-global-map) (kbd "M-n") 'other-window)
-(define-key (current-global-map) (kbd "M-p") 'frame-bck)
+(define-key (current-global-map) (kbd "M-o") 'other-window)
+(define-key (current-global-map) (kbd "M-S-o") 'frame-bck)
 
 
 ;; == Sticky mode ==
