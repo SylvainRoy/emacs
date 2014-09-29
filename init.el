@@ -12,6 +12,7 @@
 ;; Memo:
 ;;  - C-x z: repeat previous command
 ;;  - C-q C-j: insert new line in mini buffer
+;;  - M-3: Equivalent C-u 3
 
 ;; == Misc customizations ==
 
