@@ -8,11 +8,8 @@
 ;;  - multiple-cursors
 ;;  - smex
 ;;  - pcre2el
+;;  - yasnippet
 
-;; Memo:
-;;  - C-x z: repeat previous command
-;;  - C-q C-j: insert new line in mini buffer
-;;  - M-3: Equivalent C-u 3
 
 ;; == Misc customizations ==
 
@@ -104,6 +101,15 @@ your recently and most frequently used commands.")
 		(lambda ()
 		  (interactive)
 		  (join-line -1)))
+
+
+;; == snippets ==
+
+(add-hook 'after-init-hook 'init-yasnippet-hook)
+(defun init-yasnippet-hook ()
+  (require 'yasnippet)
+  (yas-global-mode 1)
+  )
 
 
 ;; == Evaluate elisp in place ==

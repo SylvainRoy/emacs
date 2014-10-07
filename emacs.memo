@@ -1,0 +1,42 @@
+= Memo =
+
+
+== Keys ==
+
+- C-x z: repeat previous command
+- C-q C-j: insert new line in mini buffer
+- M-3: Equivalent C-u 3
+- M-o: next buffer
+- M-S-o: previous buffer
+
+
+== Tips ==
+
+- C-h f piece-of-fun-name: to get function documentation
+
+
+== Pieces of code ==
+
+(defun test ()
+  "my super fun"
+  (interactive)
+  (message "Here is the word at point: %s" (thing-at-point 'word))
+  (end-of-thing 'word)
+  (right-char))
+
+(global-set-key (kbd "C-c C-c") 'test)
+
+(goto-char (point-min))
+(while (search-forward "myStr1" nil t) (replace-match "myReplaceStr1"))
+
+(defun change-title ()
+  "change underline by surrounding =="
+  (interactive)
+  (kill-whole-line)
+  (line-move -1)
+  (beginning-of-line)
+  (insert "== ")
+  (end-of-line)
+  (insert " =="))
+
+(global-set-key (kbd "C-c C-c") 'change-title)
