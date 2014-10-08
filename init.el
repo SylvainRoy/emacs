@@ -157,6 +157,13 @@ your recently and most frequently used commands.")
        auto-mode-alist))
 
 
+;; == recent files mode ==
+
+(recentf-mode 1) ; keep a list of recently opened files
+(global-set-key (kbd "<f7>") 'recentf-open-files)
+(recentf-open-files) ; start with recent files screen
+
+
 ;; == Backup file management ==
 
 ; Locate all backup files in one place.
