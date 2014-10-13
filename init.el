@@ -105,6 +105,8 @@ your recently and most frequently used commands.")
 
 ;; == snippets ==
 
+; todo: refine snippets. Use .yas-parents files to have a root directory for all mode for e.g. email, name, etc.
+(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
 (add-hook 'after-init-hook 'init-yasnippet-hook)
 (defun init-yasnippet-hook ()
   (require 'yasnippet)
