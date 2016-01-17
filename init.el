@@ -9,6 +9,8 @@
 ;;  - smex
 ;;  - pcre2el
 ;;  - yasnippet
+;;  - elpy
+;;  - ein
 
 
 ;; == Misc customizations ==
@@ -30,6 +32,8 @@
 ;; Remove useless whitespace before saving
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
+;; On Mac, the 'fn' key should behave as the ctrl key
+(setq ns-function-modifier 'control)
 
 ;; == Package sources ==
 
@@ -37,6 +41,13 @@
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 			 ("marmalade" . "http://marmalade-repo.org/packages/")
 			 ("melpa" . "http://melpa.milkbox.net/packages/")))
+
+
+;; == Ein ==
+
+;; memo:
+;;  - Start by "M-X ein:notebook-list-open"
+;;  - then, everyting's in the menus
 
 
 ;; == Multiple Cursors ==
@@ -164,6 +175,12 @@ your recently and most frequently used commands.")
 (recentf-mode 1) ; keep a list of recently opened files
 (global-set-key (kbd "<f7>") 'recentf-open-files)
 (recentf-open-files) ; start with recent files screen
+
+
+;; == Activate elpy (a better python mode) ==
+(package-initialize)
+(elpy-enable)
+(elpy-use-ipython)
 
 
 ;; == Backup file management ==
