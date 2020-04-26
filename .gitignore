@@ -2,3 +2,6 @@
 *.elc
 *~
 .DS_Store
+elpa
+elpy
+ido.last
