@@ -15,15 +15,13 @@
 
 - M-o: next buffer
 - M-S-o: previous buffer
-- F7: recently opened files
 - C-S-c C-S-c: multiple cursors on lines of block
 - C-,: multiple cursors on next line
 - C-<: multiple cursors on previous line
 - C-c C-,: multiple cursors on all similar lines
 - M-j: join lines
 - C-S-j: Eval elisp expression and replace by result
-- pause: sticky buffer
-- f7: recently opened files
+- C-S-o: sticky buffer
 
 
 == Tips ==
