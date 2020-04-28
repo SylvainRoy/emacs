@@ -59,6 +59,8 @@
 ;; enable elpy (enhanced python mode)
 ;; --------------------------------------
 
+;; Packages to install: ipython jedi autopep8 flake8 importmagic yapf
+
 ;; C-c C-c: eval selection / buffer in (i)python shell
 ;; C-c C-z: launch (i)python shell
 ;; M-Tab: propose completion
@@ -219,6 +221,10 @@ your recently and most frequently used commands.")
  '(package-selected-packages
    (quote
     (pyenv-mode elpy exec-path-from-shell material-theme better-defaults)))
+ '(safe-local-variable-values
+   (quote
+    ((eval pyvenv-activate
+	   (shell-command-to-string "poetry env info --path")))))
  '(show-paren-mode t)
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
