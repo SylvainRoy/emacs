@@ -24,6 +24,20 @@ These bindings are coming from vanilla emacs. I just never remember them.
 - C-h k <key binding>: to get teh function called by a key binding
 
 
+### Magit
+
+- C-x g: Display magit dashboard, then from there:
+    * g: refresh
+    * p/n: previous/next line/section
+    * TAB: expand/collapse region
+    * s/u: stage/unstage a file
+    * c: commit (then c, then C-c C-c)
+    * P: push (then p)
+    * q: quit
+    * b: checkout (then b)
+- C-x M-g: Get transient action from any file
+
+
 ### Custom keys
 
 Those ones are specific to this config.
