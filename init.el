@@ -5,6 +5,10 @@
 ;; install packages
 ;; --------------------------------------
 
+;; Manually run the following command after having updated
+;; the list of package-archives:
+;; (package-refresh-contents)
+
 (require 'package)
 (add-to-list 'package-archives
        '("melpa" . "https://melpa.org/packages/") t)
@@ -26,7 +30,8 @@
     multiple-cursors
     ido-vertical-mode
     smex
-    pcre2el))
+    pcre2el
+    magit))
 
 ;; install all packages in list
 (mapc #'(lambda (package)
@@ -55,6 +60,12 @@
 ;; Use shell's $PATH
 (exec-path-from-shell-copy-env "PATH")
 
+
+;; magit
+;; --------------------------------------
+
+(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x M-g") 'magit-dispatch)
 
 ;; enable elpy (enhanced python mode)
 ;; --------------------------------------
