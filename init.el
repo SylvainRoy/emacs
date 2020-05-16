@@ -168,9 +168,6 @@ your recently and most frequently used commands.")
 ;; elisp config
 ;; --------------------------------------
 
-;; Find file at point
-(global-set-key (kbd "C-x p") 'find-file-at-point)
-
 ;; Key-binding to join lines
 (global-set-key (kbd "M-j")
 		(lambda ()
@@ -193,7 +190,67 @@ your recently and most frequently used commands.")
 
 
 
-;; better key bindings to change window
+;; Find file&line at point
+;; --------------------------------------
+
+;; Look for a file name possibly followed by a line number.
+;; Supported formats are:
+;;  1- /Path/to/file:33
+;;  2- /Path/to/file <anything-in-between> line 33
+;;
+;; C-x p: prefilled find-file + goto line.
+
+(defun find-line-number-on-line()
+  "Search for a pattern like ' line XXX' to determine the line number."
+  (let* ((line (thing-at-point 'line t))
+	 (line-number-string
+	  (and (string-match " line:? +[0-9]+" line)
+	       (substring line (+ 6 (match-beginning 0)) (match-end 0)))))
+    line-number-string))
+
+(defun find-line-number-after-colon()
+  "Search for line number just after file separated by a ':'."
+  (let* ((string (ffap-string-at-point))
+	 (name
+	  (or (condition-case nil
+		  (and (not (string-match "//" string)) ; foo.com://bar
+		       (substitute-in-file-name string))
+		(error nil))
+	      string))
+	 (line-number-string
+	  (and (string-match ":[0-9]+" name)
+	       (substring name (1+ (match-beginning 0)) (match-end 0)))))
+    line-number-string))
+
+(defvar ffap-file-at-point-line-number nil
+  "Variable to hold line number from the last `ffap-file-at-point' call.")
+
+(defadvice ffap-file-at-point (after ffap-store-line-number activate)
+  "Search `ffap-string-at-point' for a line number pattern and
+save it in `ffap-file-at-point-line-number' variable."
+  (let* ((line-number-string
+	  (or (find-line-number-after-colon)
+	      (find-line-number-on-line)))
+	 (line-number
+	  (and line-number-string
+	       (string-to-number line-number-string))))
+    ; Store the line number in ffap-file-at-point-line-numbe
+    (if (and line-number (> line-number 0))
+	(setq ffap-file-at-point-line-number line-number)
+      (setq ffap-file-at-point-line-number nil))))
+
+(defadvice find-file-at-point (after ffap-goto-line-number activate)
+  "If `ffap-file-at-point-line-number' is non-nil goto this line."
+  (when ffap-file-at-point-line-number
+    (goto-line ffap-file-at-point-line-number)
+    (setq ffap-file-at-point-line-number nil)))
+
+;; Find file at point
+(global-set-key (kbd "C-x p") 'find-file-at-point)
+
+
+
+;; Better key bindings to change window
 ;; --------------------------------------
 
 (defun frame-bck()
