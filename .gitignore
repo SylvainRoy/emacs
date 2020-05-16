@@ -7,3 +7,5 @@ elpy
 ido.last
 eshell
 transient
+.mc-lists.el
+bookmarks

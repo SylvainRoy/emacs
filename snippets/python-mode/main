@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: __main__
+# key: __main__
+# group: Header
+# --
+if __name__ == "__main__":
+    $0
