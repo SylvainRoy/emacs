@@ -51,6 +51,7 @@ Those ones are specific to this config.
 - M-j: join lines
 - C-S-j: Eval elisp expression and replace by result
 - C-S-o: sticky buffer
+- C-x p: Find file at point
 
 
 ## Local config
@@ -110,3 +111,5 @@ Misc stuffMove to a given char:
       (insert "== ")
       (end-of-line)
       (insert " =="))
+
+    (find-file-at-point)

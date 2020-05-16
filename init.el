@@ -50,7 +50,6 @@
 
 (setq inhibit-startup-message t)   ;; hide the startup message
 (setq initial-scratch-message "")  ;; scratch is an empty buffer
-(load-theme 'material t)           ;; load material theme
 (column-number-mode t)             ;; add column number
 (tool-bar-mode -1)                 ;; remove tool bar
 (show-paren-mode t)                ;; Highlight matching parenthesis
@@ -62,11 +61,14 @@
 (exec-path-from-shell-copy-env "PATH")
 
 
+
 ;; Activate theme
 ;; --------------------------------------
 
-(load-theme 'solarized-dark t)
-;(load-theme 'solarized-light t)
+(load-theme 'solarized-light t)
+;(load-theme 'solarized-dark t)
+;(load-theme 'material t)
+
 
 
 ;; magit
@@ -74,6 +76,8 @@
 
 (global-set-key (kbd "C-x g") 'magit-status)
 (global-set-key (kbd "C-x M-g") 'magit-dispatch)
+
+
 
 ;; enable elpy (enhanced python mode)
 ;; --------------------------------------
@@ -98,6 +102,7 @@
 ;(setq elpy-shell-echo-output nil
 ;      python-shell-interpreter "ipython"
 ;      python-shell-interpreter-args "--simple-prompt -c exec('__import__(\\'readline\\')') -i")
+
 
 
 ;; multiple cursors
@@ -162,6 +167,9 @@ your recently and most frequently used commands.")
 
 ;; elisp config
 ;; --------------------------------------
+
+;; Find file at point
+(global-set-key (kbd "C-x p") 'find-file-at-point)
 
 ;; Key-binding to join lines
 (global-set-key (kbd "M-j")
@@ -243,6 +251,7 @@ your recently and most frequently used commands.")
  '(cua-normal-cursor-color "#839496")
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
+ '(custom-enabled-themes (quote (solarized-light)))
  '(custom-safe-themes
    (quote
     ("c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" default)))
