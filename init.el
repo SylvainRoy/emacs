@@ -52,7 +52,8 @@
 (setq initial-scratch-message "")  ;; scratch is an empty buffer
 (column-number-mode t)             ;; add column number
 (tool-bar-mode -1)                 ;; remove tool bar
-(show-paren-mode t)                ;; Highlight matching parenthesis
+(show-paren-mode t)                ;; highlight matching parenthesis
+(setq visible-bell t)              ;; make emacs silent
 ;; Remove useless whitespace before saving
 (add-hook 'before-save-hook 'whitespace-cleanup)
 ;; On Mac, the 'fn' key should behave as the ctrl key
@@ -62,12 +63,17 @@
 
 
 
-;; Activate theme
+;; Theme
 ;; --------------------------------------
 
 (load-theme 'solarized-light t)
 ;(load-theme 'solarized-dark t)
+;(load-theme 'material-light t)
 ;(load-theme 'material t)
+
+;; Ensure that the mode-line of the active buffer is clearly visible.
+(custom-set-faces
+ '(mode-line ((((class color) (min-colors 89)) (:inverse-video unspecified :underline nil :foreground "#fdf6e3" :background "#b58900")))))
 
 
 
@@ -293,101 +299,11 @@ save it in `ffap-file-at-point-line-number' variable."
 
 ;; DO NOT EDIT BELOW THIS POINT
 ;; --------------------------------------
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-faces-vector
-   [default default default italic underline success warning error])
- '(ansi-color-names-vector
-   ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
- '(compilation-message-face (quote default))
- '(cua-global-mark-cursor-color "#2aa198")
- '(cua-normal-cursor-color "#839496")
- '(cua-overwrite-cursor-color "#b58900")
- '(cua-read-only-cursor-color "#859900")
- '(custom-enabled-themes (quote (solarized-light)))
  '(custom-safe-themes
    (quote
-    ("c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" "732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" default)))
- '(fci-rule-color "#ECEFF1")
- '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
- '(highlight-symbol-colors
-   (quote
-    ("#3b6b40f432d6" "#07b9463c4d36" "#47a3341e358a" "#1d873c3f56d5" "#2d86441c3361" "#43b7362d3199" "#061d417f59d7")))
- '(highlight-symbol-foreground-color "#93a1a1")
- '(highlight-tail-colors
-   (quote
-    (("#073642" . 0)
-     ("#5b7300" . 20)
-     ("#007d76" . 30)
-     ("#0061a8" . 50)
-     ("#866300" . 60)
-     ("#992700" . 70)
-     ("#a00559" . 85)
-     ("#073642" . 100))))
- '(hl-bg-colors
-   (quote
-    ("#866300" "#992700" "#a7020a" "#a00559" "#243e9b" "#0061a8" "#007d76" "#5b7300")))
- '(hl-fg-colors
-   (quote
-    ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
- '(hl-paren-colors (quote ("#2aa198" "#b58900" "#268bd2" "#6c71c4" "#859900")))
- '(hl-sexp-background-color "#efebe9")
- '(lsp-ui-doc-border "#93a1a1")
- '(nrepl-message-colors
-   (quote
-    ("#dc322f" "#cb4b16" "#b58900" "#5b7300" "#b3c34d" "#0061a8" "#2aa198" "#d33682" "#6c71c4")))
- '(package-selected-packages
-   (quote
-    (solarized-theme pyenv-mode elpy exec-path-from-shell material-theme better-defaults)))
- '(pos-tip-background-color "#073642")
- '(pos-tip-foreground-color "#93a1a1")
- '(safe-local-variable-values
-   (quote
-    ((eval elpy-set-test-runner py\.test)
-     (eval elpy-set-test-runner "py.test")
-     (eval pyvenv-activate
-	   (shell-command-to-string "poetry env info --path")))))
- '(show-paren-mode t)
- '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
- '(term-default-bg-color "#002b36")
- '(term-default-fg-color "#839496")
- '(vc-annotate-background nil)
- '(vc-annotate-background-mode nil)
- '(vc-annotate-color-map
-   (quote
-    ((20 . "#B71C1C")
-     (40 . "#FF5722")
-     (60 . "#FFA000")
-     (80 . "#558b2f")
-     (100 . "#00796b")
-     (120 . "#2196f3")
-     (140 . "#4527A0")
-     (160 . "#B71C1C")
-     (180 . "#FF5722")
-     (200 . "#FFA000")
-     (220 . "#558b2f")
-     (240 . "#00796b")
-     (260 . "#2196f3")
-     (280 . "#4527A0")
-     (300 . "#B71C1C")
-     (320 . "#FF5722")
-     (340 . "#FFA000")
-     (360 . "#558b2f"))))
- '(vc-annotate-very-old-color nil)
- '(weechat-color-list
-   (quote
-    (unspecified "#002b36" "#073642" "#a7020a" "#dc322f" "#5b7300" "#859900" "#866300" "#b58900" "#0061a8" "#268bd2" "#a00559" "#d33682" "#007d76" "#2aa198" "#839496" "#657b83")))
- '(xterm-color-names
-   ["#073642" "#dc322f" "#859900" "#b58900" "#268bd2" "#d33682" "#2aa198" "#eee8d5"])
- '(xterm-color-names-bright
-   ["#002b36" "#cb4b16" "#586e75" "#657b83" "#839496" "#6c71c4" "#93a1a1" "#fdf6e3"]))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+    ("732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" default))))
