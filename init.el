@@ -52,8 +52,8 @@
 (setq initial-scratch-message "")  ;; scratch is an empty buffer
 (column-number-mode t)             ;; add column number
 (tool-bar-mode -1)                 ;; remove tool bar
+(toggle-scroll-bar -1)             ;; remove scrollbar
 (show-paren-mode t)                ;; highlight matching parenthesis
-(setq visible-bell t)              ;; make emacs silent
 ;; Remove useless whitespace before saving
 (add-hook 'before-save-hook 'whitespace-cleanup)
 ;; On Mac, the 'fn' key should behave as the ctrl key
@@ -63,16 +63,32 @@
 
 
 
+;; Visible bell
+;; --------------------------------------
+
+(setq visible-bell nil
+      ring-bell-function 'flash-mode-line)
+
+(defun flash-mode-line ()
+  (invert-face 'mode-line)
+  (run-with-timer 0.1 nil #'invert-face 'mode-line))
+
+
+
 ;; Theme
 ;; --------------------------------------
 
-(load-theme 'solarized-light t)
-;(load-theme 'solarized-dark t)
+;(load-theme 'solarized-light t)
+(load-theme 'solarized-dark t)
 ;(load-theme 'material-light t)
 ;(load-theme 'material t)
 
 ;; Ensure that the mode-line of the active buffer is clearly visible.
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(mode-line ((((class color) (min-colors 89)) (:inverse-video unspecified :underline nil :foreground "#fdf6e3" :background "#b58900")))))
 
 
@@ -306,4 +322,8 @@ save it in `ffap-file-at-point-line-number' variable."
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" default))))
+    ("2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" default)))
+ '(safe-local-variable-values
+   (quote
+    ((eval pyvenv-activate
+	   (shell-command-to-string "poetry env info --path"))))))
