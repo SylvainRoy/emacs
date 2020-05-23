@@ -23,7 +23,6 @@
 ;; define list of packages to install
 (defvar myPackages
   '(better-defaults
-    material-theme
     exec-path-from-shell
     elpy
     pyenv-mode
@@ -32,7 +31,10 @@
     smex
     pcre2el
     magit
-    solarized-theme))
+;    material-theme
+;    solarized-theme
+    )
+  )
 
 ;; install all packages in list
 (mapc #'(lambda (package)
@@ -78,18 +80,23 @@
 ;; Theme
 ;; --------------------------------------
 
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(setq tron-legacy-dark-fg-bright-comments t)
+(setq tron-legacy-vivid-cursor t)
+(load-theme `tron-legacy t)
+
+
 ;(load-theme 'solarized-light t)
-(load-theme 'solarized-dark t)
+;(load-theme 'solarized-dark t)
 ;(load-theme 'material-light t)
 ;(load-theme 'material t)
 
 ;; Ensure that the mode-line of the active buffer is clearly visible.
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(mode-line ((((class color) (min-colors 89)) (:inverse-video unspecified :underline nil :foreground "#fdf6e3" :background "#b58900")))))
+;(custom-set-faces
+; '(mode-line ((((class color) (min-colors 89)) (:inverse-video unspecified
+;                                                :underline nil
+;                                                :foreground "#fdf6e3"
+;                                                :background "#b58900")))))
 
 
 
@@ -322,8 +329,14 @@ save it in `ffap-file-at-point-line-number' variable."
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" default)))
+    ("ab7c93cc873a7717f2b78d2185f00e5e60e6759714253e3f6afb11271d36833f" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" default)))
  '(safe-local-variable-values
    (quote
     ((eval pyvenv-activate
 	   (shell-command-to-string "poetry env info --path"))))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
