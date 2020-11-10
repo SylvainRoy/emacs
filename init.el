@@ -32,7 +32,7 @@
     pcre2el
     magit
 ;    material-theme
-;    solarized-theme
+    solarized-theme
     )
   )
 
@@ -80,14 +80,14 @@
 ;; Theme
 ;; --------------------------------------
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(setq tron-legacy-dark-fg-bright-comments t)
-(setq tron-legacy-vivid-cursor t)
-(load-theme `tron-legacy t)
-
+;; Tron theme (doesn't display properly elpy completion)
+;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+;(setq tron-legacy-dark-fg-bright-comments t)
+;(setq tron-legacy-vivid-cursor t)
+;(load-theme `tron-legacy t)
 
 ;(load-theme 'solarized-light t)
-;(load-theme 'solarized-dark t)
+(load-theme 'solarized-dark t)
 ;(load-theme 'material-light t)
 ;(load-theme 'material t)
 
@@ -329,7 +329,10 @@ save it in `ffap-file-at-point-line-number' variable."
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("ab7c93cc873a7717f2b78d2185f00e5e60e6759714253e3f6afb11271d36833f" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" default)))
+    ("c433c87bd4b64b8ba9890e8ed64597ea0f8eb0396f4c9a9e01bd20a04d15d358" "39c9976a6483229aa6af04dccb2eceb4a3ac43d08f862099f60375511fd5ad9f" "ab7c93cc873a7717f2b78d2185f00e5e60e6759714253e3f6afb11271d36833f" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "732b807b0543855541743429c9979ebfb363e27ec91e82f463c91e68c772f6e3" "a24c5b3c12d147da6cef80938dca1223b7c7f70f2f382b26308eba014dc4833a" default)))
+ '(package-selected-packages
+   (quote
+    (vscode-dark-plus-theme solarized-theme smex pyenv-mode pcre2el multiple-cursors material-theme magit ido-vertical-mode exec-path-from-shell elpy better-defaults)))
  '(safe-local-variable-values
    (quote
     ((eval pyvenv-activate
